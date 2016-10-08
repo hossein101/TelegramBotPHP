@@ -1,19 +1,40 @@
 <?php
-/**
- * Telegram Bot example.
- * @author Gabriele Grillo <gabry.grillo@alice.it>
- */
-include("Telegram.php");
-// Set the bot TOKEN
-$bot_id = "187882019:AAG0iIZXUOCtjz_1-hHPDW3UXh83NvhKdG4";
-// Instances the class
-$telegram = new Telegram($bot_id);
-/* If you need to manually take some parameters
-*  $result = $telegram->getData();
-*  $text = $result["message"] ["text"];
-*  $chat_id = $result["message"] ["chat"]["id"];
-*/
-// Take text and chat_id from the message
+ob_start();
+define('API_KEY','291955359:AAGR0yJ5EW3v5JytF7YUwAkf9JcHm5HTi0w');
+$admin = "262171688";
+function bot($method,$datas=[]){
+    $url = "https://api.telegram.org/bot".API_KEY."/".$method;
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
+    $res = curl_exec($ch);
+    if(curl_error($ch)){
+        var_dump(curl_error($ch));
+    }else{
+        return json_decode($res);
+    }
+}
+}elseif(preg_match('/^\/([Ss]tart)/',$text1)){
+  $text = "سلام بای :D";
+  bot('sendmessage',[
+    'chat_id'=>$chat_id,
+    'text'=>$text,
+    'parse_mode'=>'html',
+    'reply_markup'=>json_encode([
+      'inline_keyboard'=>[
+        [
+          ['text'=>'😸 Channel 😸','url'=>'https://telegram.me/Red_Ch']
+        ],
+        [
+          ['text'=>'🔰سازنده بات🔰','url'=>'https://telegram.me/SiCk_KoN_BaW']
+        ],
+	[
+          ['text'=>'👥 Add To Group ➕','url'=>'https://telegram.me/donteditt_bot?startgroup=new']
+        ]
+      ]
+    ])
+  ]);
 $text = $telegram->Text();
 $chat_id = $telegram->262171688();
 // Check if the text is a command
