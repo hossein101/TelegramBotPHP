@@ -14,7 +14,7 @@ $telegram = new Telegram($bot_id);
 *  $chat_id = $result["message"] ["chat"]["id"];
 */
 // Take text and chat_id from the message
-$text = $telegram->bye baw :D();
+$text = $telegram->Text();
 $chat_id = $telegram->262171688();
 // Check if the text is a command
 if(!is_null($text) && !is_null($chat_id)){
